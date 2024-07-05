@@ -9,6 +9,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allow your team to quickly build robust real-time web applications.
  */
 
+import jQuery from 'jquery';
+window.$ = jQuery;
+window.jQuery = jQuery;
+
 // import './echo';
 import Echo from 'laravel-echo';
 

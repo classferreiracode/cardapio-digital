@@ -14,14 +14,32 @@
             </div>
         </div>
         <div class="w-full">
-            <button class="btn btn-primary btn-block" onclick="my_modal_1.showModal()">+ Adicionar ao pedido</button>
+            <button class="btn btn-primary btn-block" @click="showModal = true">+ Adicionar ao pedido</button>
         </div>
     </div>
+    <teleport to='body'>
+        <dialog :id="modalId" class="modal" :open="showModal">
+            <div class="modal-box">
+                <h3 class="text-lg font-bold">Hello!</h3>
+                <p class="py-4">Press ESC key or click the button below to close</p>
+                <div class="modal-action">
+                    <button @click="showModal = false" class="btn">Close</button>
+                </div>
+            </div>
+        </dialog>
+    </teleport>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const showModal = ref(false);
 const assetsUrl = window.location.origin + '/assets/';
 const props = defineProps({
-    data: Object
-})
+    data: Object,
+    id: [String, Number]
+});
+
+const modalId = `modal_${props.id}`;
+
 </script>
